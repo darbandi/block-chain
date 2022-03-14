@@ -1,13 +1,13 @@
 const Block = require("./block");
-const { GENESIS_DATA } = require("./config");
+const { GENESIS_DATA, MINE_RATE } = require("./config");
 const cryptoHash = require("./crypto-hash");
 
 describe("block", () => {
-  const timestamp = "123456";
+  const timestamp = 2000;
   const lastHash = "foo-hash";
   const hash = "bar-hash";
   const data = ["Mohammad", "darbandi"];
-  const difficalty = 1;
+  const difficulty = 1;
   const nonce = 1;
 
   const block = new Block({
@@ -15,7 +15,7 @@ describe("block", () => {
     lastHash,
     hash,
     data,
-    difficalty,
+    difficulty,
     nonce,
   });
 
@@ -24,7 +24,7 @@ describe("block", () => {
     expect(block.lastHash).toEqual(lastHash);
     expect(block.hash).toEqual(hash);
     expect(block.data).toEqual(data);
-    expect(block.difficalty).toEqual(difficalty);
+    expect(block.difficulty).toEqual(difficulty);
     expect(block.nonce).toEqual(nonce);
   });
 
@@ -64,7 +64,7 @@ describe("block", () => {
       expect(mineBlock.hash).toEqual(
         cryptoHash(
           mineBlock.timestamp,
-          mineBlock.difficalty,
+          mineBlock.difficulty,
           mineBlock.nonce,
           lastBlock.hash,
           data
@@ -72,10 +72,30 @@ describe("block", () => {
       );
     });
 
-    it("sets a `hash` that maches the difficalty criteria", () => {
-      expect(mineBlock.hash.substring(0, mineBlock.difficalty)).toEqual(
-        "0".repeat(mineBlock.difficalty)
+    it("sets a `hash` that maches the difficulty criteria", () => {
+      expect(mineBlock.hash.substring(0, mineBlock.difficulty)).toEqual(
+        "0".repeat(mineBlock.difficulty)
       );
+    });
+  });
+
+  describe("adjustDifficulty()", () => {
+    it("raises the difficulty for a quickly mined block", () => {
+      expect(
+        Block.adjustDifficulty({
+          originalBlock: block,
+          timestamp: block.timestamp + MINE_RATE - 100,
+        })
+      ).toEqual(block.difficulty + 1);
+    });
+
+    it("lowers the difficulty for a slowly mined block", () => {
+      expect(
+        Block.adjustDifficulty({
+          originalBlock: block,
+          timestamp: block.timestamp + MINE_RATE + 100,
+        })
+      ).toEqual(block.difficulty - 1);
     });
   });
 });
