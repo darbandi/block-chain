@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
     "test": "jest"
   },
   "keywords": [],
@@ -14,6 +16,8 @@
   },
   "dependencies": {
     "@types/jest": "^27.4.1",
-    "hex-to-binary": "^1.0.1"
+    "express": "^4.17.3",
+    "hex-to-binary": "^1.0.1",
+    "nodemon": "^2.0.15"
   }
 }
