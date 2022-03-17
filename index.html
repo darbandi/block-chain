@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="name" placeholder="name" />
+    <input type="text" id="group" placeholder="group" />
+    <input type="text" id="text" placeholder="text" />
+    <button onclick="sendMessage()">submit</button>
+
+    <ul id="message" style="height: 200px; overflow: auto"></ul>
+
+    <script
+      src="https://cdn.socket.io/4.0.1/socket.io.min.js"
+      integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      const dataList = [];
+      const socket = io("http://localhost:237");
+      socket.on("connection");
+      let currentGroup = "blockchain";
+      socket.on(currentGroup, ({ message, channel }) => {
+        if (currentGroup === channel) {
+          const li = document.createElement("li");
+          li.innerHTML = message;
+          document.getElementById("message").append(li);
+        }
+      });
+    </script>
+  </body>
+</html>
