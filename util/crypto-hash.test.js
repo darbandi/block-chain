@@ -1,8 +1,10 @@
-const cryptoHash = require("./crypto-hash");
+const { cryptoHash } = require("./");
 
 describe("cryptoHash", () => {
   it("generates a SHA-256 hashed output", () => {
-    expect(cryptoHash("foo")).toEqual("2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae");
+    expect(cryptoHash("foo")).toEqual(
+      "2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae"
+    );
   });
 
   it("produce the same hash with the same input in any order", () => {
