@@ -96,39 +96,78 @@ describe("Transaction", () => {
   });
 
   describe("update()", () => {
-    let originalSignature, originalSenderOutput, nextRecipient, nexAmount;
+    let originalSignature, originalSenderOutput, nextRecipient, nextAmount;
 
-    beforeEach(() => {
-      originalSignature = transaction.input.signature;
-      originalSenderOutput = transaction.outputMap[senderWallet.publicKey];
-      nextRecipient = "next-recipient";
-      nexAmount = 50;
-
-      transaction.update({
-        senderWallet,
-        recipient: nextRecipient,
-        amount: nexAmount,
+    describe("and the amount is invalid", () => {
+      it("throws an error", () => {
+        expect(() => {
+          transaction.update({
+            senderWallet,
+            recipient: "foo",
+            amount: 9999999,
+          });
+        }).toThrow("amount exceeds balance");
       });
     });
 
-    it("outputs the amount to the next recipient", () => {
-      expect(transaction.outputMap[nextRecipient]).toEqual(nexAmount);
-    });
+    describe("and the amount is valid", () => {
+      beforeEach(() => {
+        originalSignature = transaction.input.signature;
+        originalSenderOutput = transaction.outputMap[senderWallet.publicKey];
+        nextRecipient = "next-recipient";
+        nextAmount = 50;
 
-    it("subtract the  amount from the original sender output amount", () => {
-      expect(transaction.outputMap[senderWallet.publicKey]).toEqual(
-        originalSenderOutput - nexAmount
-      );
-    });
+        transaction.update({
+          senderWallet,
+          recipient: nextRecipient,
+          amount: nextAmount,
+        });
+      });
 
-    it("maintains a total output that matches the input amount", () => {
-      expect(
-        Object.values(transaction.outputMap).reduce((acc, curr) => acc + curr)
-      ).toEqual(transaction.input.amount);
-    });
+      it("outputs the amount to the next recipient", () => {
+        expect(transaction.outputMap[nextRecipient]).toEqual(nextAmount);
+      });
 
-    it("re-sign the transaction", () => {
-      expect(transaction.input.signature).not.toEqual(originalSignature);
+      it("subtract the  amount from the original sender output amount", () => {
+        expect(transaction.outputMap[senderWallet.publicKey]).toEqual(
+          originalSenderOutput - nextAmount
+        );
+      });
+
+      it("maintains a total output that matches the input amount", () => {
+        expect(
+          Object.values(transaction.outputMap).reduce((acc, curr) => acc + curr)
+        ).toEqual(transaction.input.amount);
+      });
+
+      it("re-sign the transaction", () => {
+        expect(transaction.input.signature).not.toEqual(originalSignature);
+      });
+
+      describe("and anouther update for the sme recipient", () => {
+        let addedAmount;
+
+        beforeEach(() => {
+          addedAmount = 80;
+          transaction.update({
+            senderWallet,
+            recipient: nextRecipient,
+            amount: addedAmount,
+          });
+        });
+
+        it("adds to the recipient amount", () => {
+          expect(transaction.outputMap[nextRecipient]).toEqual(
+            nextAmount + addedAmount
+          );
+        });
+
+        it("subtracts the amount from the original sender output amoun", () => {
+          expect(transaction.outputMap[senderWallet.publicKey]).toEqual(
+            originalSenderOutput - nextAmount - addedAmount
+          );
+        });
+      });
     });
   });
 });
