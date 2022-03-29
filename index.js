@@ -12,7 +12,7 @@ app.use(express.json());
 const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
-const pubsub = new Pubsub({ blockchain });
+const pubsub = new Pubsub({ blockchain, transactionPool });
 
 setTimeout(() => {
   pubsub.broadcastChain();
@@ -20,6 +20,10 @@ setTimeout(() => {
 
 app.get("/api/blocks", (req, res) => {
   res.json(blockchain.chain);
+});
+
+app.get("/api/transaction-pool-map", (req, res) => {
+  res.json(transactionPool.transactionMap);
 });
 
 app.post("/api/transact", (req, res) => {
@@ -38,7 +42,8 @@ app.post("/api/transact", (req, res) => {
     return res.json({ type: "error", message: error.message });
   }
   transactionPool.setTransaction(transaction);
-  console.log("transactionPool:", transactionPool);
+  pubsub.broadcastTransaction(transaction);
+  // console.log("transactionPool:", transactionPool);
   res.json({ transaction });
 });
 
@@ -52,9 +57,12 @@ app.post("/api/mine", (req, res) => {
 const rootPort = 3000;
 let PORT = 3000;
 
-const syncChains = async () => {
+const syncOnConnect = async () => {
   const response = await axios.get(`http://localhost:${rootPort}/api/blocks`);
   blockchain.replaceChain(response.data);
+  const responsePool = await axios.get(`http://localhost:${rootPort}/api/transaction-pool-map`);
+  transactionPool.setMap(responsePool.data);
+
 };
 
 tcpPortUsed.check(3000, "127.0.0.1").then(function (inUse) {
@@ -63,6 +71,6 @@ tcpPortUsed.check(3000, "127.0.0.1").then(function (inUse) {
   }
   app.listen(PORT, () => {
     console.log(`listening at localhost:${PORT}`);
-    if (PORT !== rootPort) syncChains();
+    if (PORT !== rootPort) syncOnConnect();
   });
 });
