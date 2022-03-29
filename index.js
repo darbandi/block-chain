@@ -60,9 +60,10 @@ let PORT = 3000;
 const syncOnConnect = async () => {
   const response = await axios.get(`http://localhost:${rootPort}/api/blocks`);
   blockchain.replaceChain(response.data);
-  const responsePool = await axios.get(`http://localhost:${rootPort}/api/transaction-pool-map`);
+  const responsePool = await axios.get(
+    `http://localhost:${rootPort}/api/transaction-pool-map`
+  );
   transactionPool.setMap(responsePool.data);
-
 };
 
 tcpPortUsed.check(3000, "127.0.0.1").then(function (inUse) {
