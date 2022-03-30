@@ -5,6 +5,7 @@ const TransactionPool = require("./wallet/transaction-pool");
 const Wallet = require("./wallet");
 const tcpPortUsed = require("tcp-port-used");
 const axios = require("axios");
+const TransactionMiner = require("./app/transaction-miner");
 
 const app = express();
 app.use(express.json());
@@ -13,6 +14,12 @@ const blockchain = new Blockchain();
 const transactionPool = new TransactionPool();
 const wallet = new Wallet();
 const pubsub = new Pubsub({ blockchain, transactionPool });
+const transactionMiner = new TransactionMiner({
+  blockchain,
+  transactionPool,
+  wallet,
+  pubsub,
+});
 
 setTimeout(() => {
   pubsub.broadcastChain();
@@ -20,6 +27,11 @@ setTimeout(() => {
 
 app.get("/api/blocks", (req, res) => {
   res.json(blockchain.chain);
+});
+
+app.get("/api/mine-transactions", (req, res) => {
+  transactionMiner.mineTransactions();
+  res.redirect("/api/blocks");
 });
 
 app.get("/api/transaction-pool-map", (req, res) => {
