@@ -6,8 +6,24 @@ const Wallet = require("./wallet");
 const tcpPortUsed = require("tcp-port-used");
 const axios = require("axios");
 const TransactionMiner = require("./app/transaction-miner");
+const path = require("path");
+const cors = require("cors");
 
 const app = express();
+const corsOpts = {
+  origin: '*',
+
+  methods: [
+    'GET',
+    'POST',
+  ],
+
+  allowedHeaders: [
+    'Content-Type',
+  ],
+};
+app.use(cors(corsOpts));
+app.use(express.static("./client/src"));
 app.use(express.json());
 
 const blockchain = new Blockchain();
@@ -24,6 +40,10 @@ const transactionMiner = new TransactionMiner({
 setTimeout(() => {
   pubsub.broadcastChain();
 }, 1000);
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/dist/index.html"));
+});
 
 app.get("/api/blocks", (req, res) => {
   res.json(blockchain.chain);
