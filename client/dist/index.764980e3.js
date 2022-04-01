@@ -996,7 +996,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
-var _app = require("./components/app");
+var _app = require("./components/App");
 var _appDefault = parcelHelpers.interopDefault(_app);
 const container = document.getElementById("root");
 const root = _client.createRoot(container);
@@ -1011,7 +1011,7 @@ root.render(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_appDefault.default, {}, void 0,
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-dom/client":"lOjBx","./components/app":"iRIv2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./components/App":"ifYPa"}],"iTorj":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-dev-runtime.development.js');
 
@@ -25084,80 +25084,7 @@ module.exports = require('./cjs/scheduler.development.js');
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== 'undefined' && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === 'function') __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"iRIv2":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$0119 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$0119.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _axios = require("axios");
-var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var _s = $RefreshSig$();
-function App() {
-    _s();
-    const [state, setState] = _react.useState({});
-    _react.useEffect(()=>{
-        const getData = async ()=>{
-            const response = await _axiosDefault.default.get("http://localhost:3000/api/wallet-info");
-            console.log(response.data);
-            setState(response.data);
-        };
-        getData();
-    }, []);
-    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
-        children: [
-            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h1", {
-                children: "wallet info:"
-            }, void 0, false, {
-                fileName: "client/src/components/app.js",
-                lineNumber: 17,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h3", {
-                children: [
-                    "Address: ",
-                    state.address
-                ]
-            }, void 0, true, {
-                fileName: "client/src/components/app.js",
-                lineNumber: 18,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h3", {
-                children: [
-                    "Balance: ",
-                    state.balance
-                ]
-            }, void 0, true, {
-                fileName: "client/src/components/app.js",
-                lineNumber: 19,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "client/src/components/app.js",
-        lineNumber: 16,
-        columnNumber: 5
-    }, this);
-}
-_s(App, "d/109zsnYLOF9M9RLxKBdAExSLI=");
-_c = App;
-exports.default = App;
-var _c;
-$RefreshReg$(_c, "App");
-
-  $parcel$ReactRefreshHelpers$0119.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","axios":"jo6P5"}],"gkKU3":[function(require,module,exports) {
+},{}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -25187,7 +25114,92 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"jo6P5":[function(require,module,exports) {
+},{}],"ifYPa":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$84ad = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$84ad.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _block = require("./Block");
+var _blockDefault = parcelHelpers.interopDefault(_block);
+var _s = $RefreshSig$();
+function App() {
+    _s();
+    const [state, setState] = _react.useState({});
+    _react.useEffect(()=>{
+        const getData = async ()=>{
+            const response = await _axiosDefault.default.get("http://localhost:3000/api/wallet-info");
+            console.log(response.data);
+            setState(response.data);
+        };
+        getData();
+    }, []);
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+        children: [
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h1", {
+                children: "wallet info:"
+            }, void 0, false, {
+                fileName: "client/src/components/App.js",
+                lineNumber: 18,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h3", {
+                children: [
+                    "Address: ",
+                    state.address
+                ]
+            }, void 0, true, {
+                fileName: "client/src/components/App.js",
+                lineNumber: 19,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h3", {
+                children: [
+                    "Balance: ",
+                    state.balance
+                ]
+            }, void 0, true, {
+                fileName: "client/src/components/App.js",
+                lineNumber: 20,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("br", {}, void 0, false, {
+                fileName: "client/src/components/App.js",
+                lineNumber: 21,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_blockDefault.default, {}, void 0, false, {
+                fileName: "client/src/components/App.js",
+                lineNumber: 22,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "client/src/components/App.js",
+        lineNumber: 17,
+        columnNumber: 5
+    }, this);
+}
+_s(App, "d/109zsnYLOF9M9RLxKBdAExSLI=");
+_c = App;
+exports.default = App;
+var _c;
+$RefreshReg$(_c, "App");
+
+  $parcel$ReactRefreshHelpers$84ad.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Block":"dvAge"}],"jo6P5":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"63MyY"}],"63MyY":[function(require,module,exports) {
@@ -26722,6 +26734,67 @@ module.exports = CancelToken;
     return typeof payload === 'object' && payload.isAxiosError === true;
 };
 
-},{}]},["kn9T2","8rmpt","iXgNX"], "iXgNX", "parcelRequirec268")
+},{}],"dvAge":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$765c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$765c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _s = $RefreshSig$();
+function Block() {
+    _s();
+    const [state, setState] = _react.useState([]);
+    _react.useEffect(()=>{
+        const getData = async ()=>{
+            const response = await _axiosDefault.default.get("http://localhost:3000/api/blocks");
+            console.log(response.data);
+            setState(response.data);
+        };
+        getData();
+    }, []);
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+        children: [
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h1", {
+                children: "Blocks:"
+            }, void 0, false, {
+                fileName: "client/src/components/Block.js",
+                lineNumber: 17,
+                columnNumber: 7
+            }, this),
+            state.map((block)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+                    children: block.hash
+                }, block.hash, false, {
+                    fileName: "client/src/components/Block.js",
+                    lineNumber: 19,
+                    columnNumber: 9
+                }, this)
+            )
+        ]
+    }, void 0, true, {
+        fileName: "client/src/components/Block.js",
+        lineNumber: 16,
+        columnNumber: 5
+    }, this);
+}
+_s(Block, "7zZJjGiSRppMnnlYfwuyXOUEkjY=");
+_c = Block;
+exports.default = Block;
+var _c;
+$RefreshReg$(_c, "Block");
+
+  $parcel$ReactRefreshHelpers$765c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["kn9T2","8rmpt","iXgNX"], "iXgNX", "parcelRequirec268")
 
 //# sourceMappingURL=index.764980e3.js.map

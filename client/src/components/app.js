@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Block from "./Block";
 
 function App() {
   const [state, setState] = useState({});
@@ -17,6 +18,8 @@ function App() {
       <h1>wallet info:</h1>
       <h3>Address: {state.address}</h3>
       <h3>Balance: {state.balance}</h3>
+      <br />
+      <Block />
     </div>
   );
 }

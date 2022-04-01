@@ -1,4 +1,4 @@
-23321
+23322
 90D:\Git\block-chain\node_modules\date-fns\esm\differenceInCalendarISOWeekYears\package.json121436361000000000 0
 78D:\Git\block-chain\node_modules\jsdom\lib\jsdom\living\generated\ErrorEvent.js121436361000000000 0
 71D:\Git\block-chain\node_modules\rxjs\add\operator\withLatestFrom.js.map121436361000000000 0
@@ -163,7 +163,7 @@
 54D:\Git\block-chain\node_modules\lodash\_arrayFilter.js121436361000000000 0
 42D:\Git\block-chain\node_modules\decimal.js132918933112824210 1
 27D:\Git\block-chain\coverage132931685893671637 1
-27D:\Git\block-chain\index.js132931743665173814 0
+27D:\Git\block-chain\index.js132931758955942736 0
 46D:\Git\block-chain\node_modules\dom-serializer132931700126824343 1
 61D:\Git\block-chain\node_modules\date-fns\locale\sq\_lib\match132931707818388030 1
 79D:\Git\block-chain\node_modules\rxjs\_esm2015\internal\testing\HotObservable.js121436361000000000 0
@@ -1250,7 +1250,7 @@
 51D:\Git\block-chain\node_modules\@types\node\v8.d.ts132901075030000000 0
 68D:\Git\block-chain\node_modules\rxjs\internal\operators\startWith.js121436361000000000 0
 50D:\Git\block-chain\node_modules\timsort\LICENSE.md131138581980000000 0
-38D:\Git\block-chain\client\src\index.js132931713737441861 0
+38D:\Git\block-chain\client\src\index.js132931748259203049 0
 61D:\Git\block-chain\node_modules\date-fns\esm\addDays\index.js121436361000000000 0
 58D:\Git\block-chain\node_modules\end-of-stream\package.json132918933759448276 0
 50D:\Git\block-chain\node_modules\sisteransi\license121436361000000000 0
@@ -12124,6 +12124,7 @@
 66D:\Git\block-chain\node_modules\date-fns\esm\fp\getWeek\index.d.ts121436361000000000 0
 64D:\Git\block-chain\node_modules\http-proxy-agent\dist\index.d.ts121436361000000000 0
 54D:\Git\block-chain\node_modules\date-fns\esm\locale\id132931707835057035 1
+47D:\Git\block-chain\client\src\components\App.js132931750369935298 0
 68D:\Git\block-chain\node_modules\@babel\helper-module-imports\LICENSE121012626000000000 0
 50D:\Git\block-chain\node_modules\lodash\invertBy.js121436361000000000 0
 55D:\Git\block-chain\node_modules\lodash\fp\extendWith.js121436361000000000 0
@@ -23309,13 +23310,13 @@
 70D:\Git\block-chain\coverage\lcov-report\block-chain\util\index.js.html132931685893290631 0
 76D:\Git\block-chain\coverage\lcov-report\block-chain\blockchain\block.js.html132931685893093658 0
 73D:\Git\block-chain\coverage\lcov-report\block-chain\blockchain\index.html132931685893043668 0
-30D:\Git\block-chain\client\dist132931736507014820 1
-40D:\Git\block-chain\client\src\components132931712751777645 1
-47D:\Git\block-chain\client\src\components\app.js132931734985630426 0
+30D:\Git\block-chain\client\dist132931750373128999 1
+40D:\Git\block-chain\client\src\components132931748115150785 1
+49D:\Git\block-chain\client\src\components\Block.js132931750006810258 0
 48D:\Git\block-chain\client\dist\index.5ae85cbd.js132931700551571054 0
 52D:\Git\block-chain\client\dist\index.5ae85cbd.js.map132931700551661003 0
-48D:\Git\block-chain\client\dist\index.764980e3.js132931736506785138 0
-52D:\Git\block-chain\client\dist\index.764980e3.js.map132931736506994830 0
+48D:\Git\block-chain\client\dist\index.764980e3.js132931750372919115 0
+52D:\Git\block-chain\client\dist\index.764980e3.js.map132931750373109008 0
 52D:\Git\block-chain\client\dist\index.7b4d6c2e.js.map132931702149112826 0
 41D:\Git\block-chain\client\dist\index.html132931736504132103 0
 43D:\Git\block-chain\blockchain\block.test.js132920740040680844 0
